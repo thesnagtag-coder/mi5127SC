@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>The Move-In &amp; Move-Out Check - Beneath the Surface by The Snag Tag</title>
+<meta name="description" content="8 real move-in and move-out checks for tenants, landlords and buyers: condition report, time-stamped photos, meters, keys, deposit and the final walk-through. Free, 5 minutes, no signup - from The Snag Tag.">
+<style>
+:root{
+  --accent:#1E3A8A; --accent-dark:#2D5B9A; --accent-rgb:30,58,138;
+}
+body[data-mode="light"], body{
+  --bg:#F7FAFD; --surface:#FFFFFF; --surface-2:#E8F0FA; --tile:#F7FAFD;
+  --ink:#16243F; --ink-mid:#44546F; --ink-soft:#6B7A93; --line:#C9D6E8;
+  --navy:#16243F; --navy-2:#1E3154;
+  --safe:#2E7D4F; --safe-bg:#E7F5EC;
+  --flag:#A15C00; --flag-bg:#FFF3E0;
+  --grid:rgba(45,91,154,.06);
+}
+body[data-mode="dark"]{
+  --bg:#0F1A2C; --surface:#15233A; --surface-2:#1C3150; --tile:#122036;
+  --ink:#E6EEF9; --ink-mid:#B8C6DB; --ink-soft:#8C9BB2; --line:#2F4466;
+  --navy:#0B1424; --navy-2:#0F1A2C;
+  --safe:#81C995; --safe-bg:#1B3326;
+  --flag:#FFB74D; --flag-bg:#3A2C17;
+  --grid:rgba(140,180,230,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+h1,h2,h3,h4{margin:0}
+.mono{font-family:ui-monospace,"SFMono-Regular","Cascadia Mono","Roboto Mono",Consolas,monospace}
+::selection{background:rgba(var(--accent-rgb),.35)}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.topbar{
+  background:var(--navy); color:#fff; border-bottom:3px solid var(--accent);
+  padding:12px 18px; display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:20;
+}
+.topbar-left{display:flex; align-items:center; gap:10px}
+.topbar-logo{width:32px;height:32px;border-radius:6px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;flex:none}
+.topbar-logo svg{width:18px;height:18px}
+.topbar-name{font-weight:700; font-size:16px; letter-spacing:-.2px}
+.topbar-name span{color:#BFD2F8}
+.topbar-sub{font-size:11px; color:rgba(255,255,255,.65); font-weight:500; letter-spacing:.06em; text-transform:uppercase}
+.topbar-tools{display:flex; gap:6px}
+.tool-btn{background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.2); color:#fff; border-radius:6px; padding:7px 10px; font-size:13px; cursor:pointer; font-weight:600; display:flex; align-items:center; gap:5px}
+.tool-btn:hover{background:rgba(255,255,255,.17)}
+
+.progress-wrap{position:sticky; top:59px; z-index:19; background:var(--bg); padding:10px 18px 8px; border-bottom:1px solid var(--line)}
+.progress-track{height:6px; background:var(--surface-2); border-radius:99px; overflow:hidden; max-width:640px; margin:0 auto}
+.progress-fill{height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-dark)); border-radius:99px; transition:width .35s ease; width:0%}
+.progress-label{max-width:640px; margin:6px auto 0; font-size:12px; color:var(--ink-soft); font-weight:600; display:flex; justify-content:space-between}
+
+main{max-width:640px; margin:0 auto; padding:28px 20px 90px}
+.screen{display:none; animation:fade .35s ease}
+.screen.active{display:block}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
+
+.hook-badge{display:inline-flex; align-items:center; gap:6px; background:var(--surface); border:1px solid var(--line); color:var(--accent-dark); font-weight:700; font-size:12.5px; padding:5px 12px; border-radius:99px; margin-bottom:18px}
+body[data-mode="dark"] .hook-badge{color:#8CB4E6}
+.hook h1{font-size:clamp(1.7rem,6vw,2.3rem); line-height:1.15; margin-bottom:14px}
+.hook h1 em{font-style:normal; color:var(--accent)}
+.hook p.lede{font-size:1.05rem; color:var(--ink-mid); margin-bottom:22px}
+.hook-facts{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:26px}
+.hook-fact{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 10px; text-align:center}
+.hook-fact .n{font-size:1.4rem; font-weight:700; color:var(--accent)}
+.hook-fact .t{font-size:11.5px; color:var(--ink-soft); font-weight:600; margin-top:2px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  border-radius:10px; padding:15px 22px; font-size:16px; font-weight:700; cursor:pointer;
+  border:none; width:100%; text-align:center; text-decoration:none;
+}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-dark)); color:#fff; box-shadow:0 4px 14px rgba(var(--accent-rgb),.3)}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-ghost{background:var(--surface); color:var(--ink); border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent)}
+.hint-row{display:flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; color:var(--ink-soft); justify-content:center; text-align:center}
+
+.choose-card{background:var(--surface); border:1.5px solid var(--line); border-radius:12px; padding:18px 18px; margin-bottom:12px; cursor:pointer; transition:border-color .15s}
+.choose-card:hover{border-color:var(--accent)}
+.choose-card .cc-label{font-size:1.1rem; font-weight:700; margin-bottom:3px}
+.choose-card .cc-range{font-size:13px; color:var(--ink-soft); font-weight:600}
+
+.zone-chip{display:inline-flex; align-items:center; gap:6px; background:var(--surface); border:1px solid var(--line); color:var(--ink-mid); font-weight:700; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; padding:5px 11px; border-radius:99px; margin-bottom:16px}
+.zone-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+.check-card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:24px 22px; box-shadow:0 2px 12px rgba(22,36,63,.06)}
+.check-card .verb{font-size:12.5px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px}
+.check-card h2{font-size:1.35rem; line-height:1.3; margin-bottom:10px}
+.check-card .prompt{font-size:1rem; color:var(--ink-mid); margin-bottom:20px}
+.check-card .prompt strong{color:var(--ink)}
+.opts{display:flex; flex-direction:column; gap:10px; margin-bottom:4px}
+.opt{
+  display:flex; align-items:center; gap:12px; background:var(--tile); border:1.5px solid var(--line);
+  border-radius:10px; padding:14px 16px; cursor:pointer; font-size:15px; font-weight:600; color:var(--ink);
+  transition:border-color .15s, background .15s;
+}
+.opt:hover{border-color:var(--accent)}
+.opt .ic{width:22px;height:22px;border-radius:50%;border:2px solid var(--line); flex:none; display:flex;align-items:center;justify-content:center; font-size:13px; font-weight:800; color:transparent}
+.opt.selected{border-color:var(--accent-dark)}
+.opt.selected.safe{background:var(--safe-bg); border-color:var(--safe)}
+.opt.selected.safe .ic{border-color:var(--safe); color:var(--safe)}
+.opt.selected.flag{background:var(--flag-bg); border-color:var(--flag)}
+.opt.selected.flag .ic{border-color:var(--flag); color:var(--flag)}
+.change-hint{font-size:12.5px; color:var(--ink-soft); margin:10px 0 0}
+
+.reveal{margin-top:18px; border-radius:10px; padding:16px 18px; border-left:4px solid var(--accent-dark); background:var(--surface-2); display:none}
+.reveal.show{display:block; animation:fade .3s ease}
+.reveal .rk{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent-dark); margin-bottom:6px}
+.reveal.good{border-left-color:var(--safe); background:var(--safe-bg)}
+.reveal.good .rk{color:var(--safe)}
+.reveal.bad{border-left-color:var(--flag); background:var(--flag-bg)}
+.reveal.bad .rk{color:var(--flag)}
+.reveal p{margin:0 0 8px; font-size:14.5px; color:var(--ink-mid)}
+.reveal p:last-child{margin-bottom:0}
+.reveal .src{font-size:12.5px; color:var(--ink-soft); font-style:italic}
+
+.nav-row{display:flex; gap:10px; margin-top:22px}
+.nav-row .btn{flex:1}
+.nav-back{background:transparent; color:var(--ink-soft); border:none; font-size:13px; font-weight:600; cursor:pointer; padding:8px; margin-top:10px; width:100%; text-align:center}
+
+.result-head{text-align:center; margin-bottom:24px}
+.result-head .kicker{font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft)}
+.result-head h1{font-size:1.8rem; margin:8px 0 4px}
+.result-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:22px 0 26px}
+.rstat{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 8px; text-align:center}
+.rstat .n{font-size:1.9rem; font-weight:700}
+.rstat.total .n{color:var(--ink)}
+.rstat.safe .n{color:var(--safe)}
+.rstat.flag .n{color:var(--flag)}
+.rstat .t{font-size:11.5px; color:var(--ink-soft); font-weight:600; margin-top:2px}
+
+.zone-bars{display:flex; flex-direction:column; gap:10px; margin-bottom:26px}
+.zbar-row{display:flex; align-items:center; gap:10px}
+.zbar-label{width:132px; flex:none; font-size:12.5px; font-weight:600; color:var(--ink-mid); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.zbar-track{flex:1; height:9px; background:var(--surface-2); border-radius:99px; overflow:hidden}
+.zbar-fill{height:100%; border-radius:99px; background:var(--safe)}
+.zbar-fill.partial{background:var(--flag)}
+.zbar-count{width:38px; flex:none; text-align:right; font-size:12.5px; font-weight:700; color:var(--ink-soft)}
+
+.section-h{font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); margin:26px 0 12px}
+.finding{display:flex; gap:12px; padding:13px 0; border-bottom:1px solid var(--line)}
+.finding:last-child{border-bottom:none}
+.finding .fic{width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.finding.flag .fic{background:var(--flag-bg); color:var(--flag)}
+.finding.safe .fic{background:var(--safe-bg); color:var(--safe)}
+.finding .ft{font-weight:700; font-size:14.5px; margin-bottom:2px}
+.finding .fd{font-size:13.5px; color:var(--ink-soft); line-height:1.5}
+
+.quickwin{background:var(--surface); border:1.5px solid var(--accent); border-radius:14px; padding:20px; margin:8px 0 26px}
+.quickwin .qk{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:8px}
+.quickwin h3{font-size:1.1rem; margin-bottom:8px}
+.quickwin p{font-size:14.5px; color:var(--ink-mid); margin:0}
+
+.bridge{background:var(--navy); border-top:3px solid var(--accent); color:#fff; border-radius:14px; padding:26px 22px; margin:10px 0 20px}
+.bridge .bk{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#BFD2F8}
+.bridge h3{font-size:1.4rem; margin:8px 0 12px; line-height:1.3}
+.bridge p{font-size:14.5px; color:rgba(255,255,255,.82); margin:0 0 14px}
+.bridge .still{background:rgba(255,255,255,.07); border-radius:10px; padding:14px 16px; margin:14px 0}
+.bridge .still h4{font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; color:rgba(255,255,255,.6); margin-bottom:8px}
+.bridge .still ul{margin:0; padding-left:18px; font-size:13.5px; color:rgba(255,255,255,.85)}
+.bridge .still li{margin-bottom:5px}
+.bridge .btn-primary{margin-top:6px}
+.bridge .note{font-size:11.5px; color:rgba(255,255,255,.5); margin-top:10px; text-align:center}
+
+.restart-row{text-align:center; margin-top:8px}
+.restart-row button{background:none; border:none; color:var(--ink-soft); font-size:13px; font-weight:600; text-decoration:underline; cursor:pointer}
+
+.disclaimer{font-size:12px; color:var(--ink-soft); text-align:center; margin-top:30px; padding-top:18px; border-top:1px solid var(--line); line-height:1.6}
+</style>
+</head>
+<body data-mode="light">
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#BFD2F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><circle cx="10" cy="15" r="2"/><path d="M12 15h4v2"/></svg></span>
+    <div>
+      <div class="topbar-name">Beneath the <span>Surface</span></div>
+      <div class="topbar-sub">by The Snag Tag &middot; Move-In &amp; Move-Out Check</div>
+    </div>
+  </div>
+  <div class="topbar-tools">
+    <button class="tool-btn" id="modeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
+  </div>
+</div>
+
+<div class="progress-wrap" id="progressWrap" style="display:none">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label"><span id="progressText">Check 1</span><span id="progressPct">0%</span></div>
+</div>
+
+<main>
+
+  <section class="screen active" id="screen-hook">
+    <div class="hook">
+      <span class="hook-badge">🔑 For tenants, landlords and buyers</span>
+      <h1>Record it on day one. <em>Prove it on the last day.</em></h1>
+      <p class="lede">Real checks, pulled from The Snag Tag's Beneath the Surface Move-In / Move-Out tool. Condition reports, time-stamped photos, meters, keys and the final walk-through. No signup, no scare tactics.</p>
+      <div class="hook-facts">
+        <div class="hook-fact"><div class="n">8</div><div class="t">real checks</div></div>
+        <div class="hook-fact"><div class="n">~5</div><div class="t">minutes</div></div>
+        <div class="hook-fact"><div class="n">Free</div><div class="t">to start</div></div>
+      </div>
+      <button class="btn btn-primary" id="startBtn" type="button">Start the Check &rarr;</button>
+      <div class="hint-row">Free. No account. Your answers stay on this device.</div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-choose">
+    <div class="hook">
+      <h1 style="font-size:1.6rem">Which fits you right now?</h1>
+      <p class="lede" style="margin-bottom:20px">This decides which real checks you'll see today. Pick the one that fits.</p>
+      <div class="choose-card" data-key="buyer"><div class="cc-label">I'm buying a home</div><div class="cc-range">Final walk-through before completion</div></div>
+      <div class="choose-card" data-key="owner"><div class="cc-label">I'm renting, letting or moving</div><div class="cc-range">Move-in and move-out checks for tenants and landlords</div></div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-check">
+    <span class="zone-chip"><span class="dot"></span><span id="chkZone">Zone</span></span>
+    <div class="check-card">
+      <div class="verb" id="chkVerb">Check</div>
+      <h2 id="chkTitle"></h2>
+      <p class="prompt" id="chkPrompt"></p>
+      <div class="opts" id="chkOpts"></div>
+      <p class="change-hint">Pick either one. You can change your answer any time before you move on.</p>
+      <div class="reveal" id="chkReveal">
+        <div class="rk" id="revealKicker">Here's what actually matters</div>
+        <p id="revealWhy"></p>
+        <p id="revealHow"></p>
+        <p class="src" id="revealSrc"></p>
+      </div>
+      <div class="nav-row" id="chkNavRow" style="display:none">
+        <button class="btn btn-primary" id="chkNextBtn" type="button">Next check &rarr;</button>
+      </div>
+    </div>
+    <button class="nav-back" id="chkBackBtn" type="button">&larr; back</button>
+    <button class="nav-back" id="chkChooseBtn" type="button" style="opacity:.65">Choose a different check</button>
+  </section>
+
+  <section class="screen" id="screen-result">
+    <div class="result-head">
+      <div class="kicker">Your Move-In &amp; Move-Out Check</div>
+      <h1 id="resultHeadline">Here's what you found</h1>
+    </div>
+
+    <div class="result-stats">
+      <div class="rstat total"><div class="n" id="statTotal">0</div><div class="t">checked today</div></div>
+      <div class="rstat safe"><div class="n" id="statSafe">0</div><div class="t">already sorted</div></div>
+      <div class="rstat flag"><div class="n" id="statFlag">0</div><div class="t">need attention</div></div>
+    </div>
+
+    <div class="zone-bars" id="zoneBars"></div>
+
+    <div class="section-h">What to check today</div>
+    <div id="findingsFlag"></div>
+
+    <div class="section-h">Already sorted</div>
+    <div id="findingsSafe"></div>
+
+    <div class="quickwin" id="quickwin">
+      <div class="qk">&#9889; Quick win - do this now, free</div>
+      <h3 id="qwTitle"></h3>
+      <p id="qwBody"></p>
+    </div>
+
+    <div class="bridge">
+      <div class="bk">The complete system</div>
+      <h3 id="bridgeHeadline">You found the gaps. Here's what closes them.</h3>
+      <p id="bridgeBody"></p>
+      <div class="still" id="bridgeStill">
+        <h4>Today's check opened part of the picture. Here's what's still closed:</h4>
+        <ul id="bridgeStillList"></ul>
+      </div>
+      <a class="btn btn-primary" id="proBtn" href="#" target="_blank" rel="noopener">Get the complete tool &rarr;</a>
+      <div class="note">One-time purchase. Works offline, on any device, no subscription.</div>
+      <button class="btn btn-ghost" id="saveResultsBtn" type="button" style="margin-top:12px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff">Not ready yet? Save my results instead &rarr;</button>
+      <div class="note">Downloads a copy of exactly what you found today, free, no email needed. Nothing here disappears, but nothing reminds you either, so keep it somewhere you'll see it.</div>
+    </div>
+
+    <div class="restart-row"><button id="restartBtn" type="button">&#8634; Start the check again</button></div>
+
+    <div class="disclaimer">This is educational general guidance from The Snag Tag, a NEBOSH &amp; OSHA trained HSE professional. It is not legal advice and does not decide who pays for damage or what happens to a deposit. Tenancy laws, deadlines and deposit rules differ between countries and states, so always check your local tenancy authority and your agreement.</div>
+  </section>
+
+</main>
+
+<script>
+/* ============================================================
+   SET YOUR GUMROAD LINK HERE (one place, used everywhere)
+   ============================================================ */
+const GUMROAD_URL = "https://snagtag.gumroad.com/l/BTS_MoveInOut_PRO";
+
+const PRODUCTS = {
+  "buyer": {
+    "label": "Pre-Purchase",
+    "ageRange": "Final walk-through before completion",
+    "accent": "#1E3A8A",
+    "accentDark": "#2D5B9A",
+    "checks": [
+      {
+        "zone": "Repairs",
+        "verb": "Check",
+        "title": "Have all the agreed repairs been done?",
+        "prompt": "The final walk-through is your <strong>last easy chance</strong> to check.",
+        "yes": "Yes, all checked",
+        "no": "Not yet, or not sure",
+        "why": "Repairs agreed during the sale are much easier to sort out before you complete than after.",
+        "how": "Take your list of agreed repairs to the final walk-through. Check each one in person and ask for the invoices.",
+        "standard": "US CFPB: before closing, inspect the home and make sure it is acceptable and any agreed repairs have been completed.",
+        "tip": "Photograph each finished repair next to your list, so you have a dated record.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Agreed repairs) · CFPB"
+      },
+      {
+        "zone": "Inclusions",
+        "verb": "Try it",
+        "title": "Are all the included appliances and fittings there and working?",
+        "prompt": "Check what's <strong>in the contract</strong> is in the house.",
+        "yes": "Yes, all there and working",
+        "no": "Missing, broken, or not checked",
+        "why": "Items listed in the sale are part of what you pay for.",
+        "how": "Take the list of included items. Check each is present, switch appliances on, run taps, open and close doors and windows.",
+        "standard": "US CFPB: inspect the home and make sure it is acceptable before closing. Checking inclusions against the contract: professional practice.",
+        "tip": "Check the garage, shed and loft too. Included items are sometimes left, or removed, there.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Included items) · CFPB · Professional practice"
+      },
+      {
+        "zone": "Safety",
+        "verb": "Test",
+        "title": "Did you test the smoke alarms on the walk-through?",
+        "prompt": "It takes seconds and it's <strong>the first safety check</strong> in a new home.",
+        "yes": "Yes, all sounded",
+        "no": "No, or some didn't",
+        "why": "Working smoke alarms matter from the first night in a new home.",
+        "how": "Press the test button on each alarm (with permission). Note any missing or silent alarms and ask for them to be fixed or plan to replace them.",
+        "standard": "NFPA: test all smoke alarms at least once a month.",
+        "tip": "Count the alarms as you go. It's a quick number to compare with the house plan.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Smoke alarms working) · NFPA"
+      },
+      {
+        "zone": "Services",
+        "verb": "Ask",
+        "title": "Do you know where the water shut-off and gas valve are?",
+        "prompt": "In an emergency, you need to find them <strong>fast</strong>.",
+        "yes": "Yes, I've been shown",
+        "no": "Not yet",
+        "why": "If a pipe bursts or you smell gas, turning off the supply is one of the first steps.",
+        "how": "Ask the seller or agent to show you the water shut-off, the gas emergency control valve and the electrical panel. Photograph each one.",
+        "standard": "Gas Safe Register: if you smell gas, turn off the emergency control valve (unless in a basement or cellar). Knowing where the water shut-off is: professional practice.",
+        "tip": "Label each one with a tag the day you move in.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Water shut-off and gas valve) · Gas Safe Register · Professional practice"
+      },
+      {
+        "zone": "Handover",
+        "verb": "Ask",
+        "title": "Will you get all keys, remotes, codes and manuals?",
+        "prompt": "Keys and codes are <strong>easy to forget</strong> at handover.",
+        "yes": "Yes, it's agreed",
+        "no": "Not sure",
+        "why": "Keys, garage remotes, alarm codes and appliance manuals are easy to forget at handover.",
+        "how": "List every door, window, garage and gate key, remote and code. Ask for manuals and warranties for included appliances.",
+        "standard": "Agreeing a full handover list: professional practice.",
+        "tip": "Test every key in its lock on the day. A key that doesn't turn is easy to spot then.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Keys counted) · Professional practice"
+      },
+      {
+        "zone": "Evidence",
+        "verb": "Photograph",
+        "title": "Will you photograph every room at handover?",
+        "prompt": "Photos with a <strong>time stamp</strong> show the condition on the day.",
+        "yes": "Yes, every room",
+        "no": "Not planned",
+        "why": "If damage appears between the walk-through and moving in, dated photos show what the home was like.",
+        "how": "Walk every room in the same order. Take a wide photo from the doorway and close-ups of any marks, with the camera time stamp on.",
+        "standard": "NSW Government (rental condition reports): take photos with time stamps to show when images were taken. The same method works for buyers.",
+        "tip": "Use video as well as photos. Say the room name as you go in.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Handover Sweep · NSW Condition reports"
+      },
+      {
+        "zone": "Meters",
+        "verb": "Photograph",
+        "title": "Will you photograph the meter readings at handover?",
+        "prompt": "Readings on the day mean you <strong>only pay for your own use</strong>.",
+        "yes": "Yes, all meters",
+        "no": "Not planned",
+        "why": "Meter readings on the handover day separate the previous owner's use from yours.",
+        "how": "Find the electricity, gas and water meters. Photograph each reading with the date and time visible, and send them to your suppliers.",
+        "standard": "MoneyHelper (UK): take photos of the meters so you are only charged for the energy you use. The same method works for buyers.",
+        "tip": "Photograph the meter serial number too, so there's no mix-up.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Keys & Meters · MoneyHelper Moving checklist"
+      },
+      {
+        "zone": "Changes",
+        "verb": "Look",
+        "title": "Has anything been damaged since your offer?",
+        "prompt": "Moving furniture out can <strong>leave new damage</strong> behind.",
+        "yes": "No, nothing new",
+        "no": "Yes, or not sure",
+        "why": "Removals and time can leave new marks, damage or problems that weren't there when you agreed the price.",
+        "how": "Compare the home with your viewing photos. Look for new wall damage, floor marks, missing fittings, leaks and anything not working.",
+        "standard": "US CFPB: inspect the home and make sure it is acceptable before closing.",
+        "tip": "Look where large furniture stood. Marks and damage often hide there.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Agreed repairs) · CFPB"
+      }
+    ]
+  },
+  "owner": {
+    "label": "Maintenance",
+    "ageRange": "Renting, letting or moving home",
+    "accent": "#1E3A8A",
+    "accentDark": "#2D5B9A",
+    "checks": [
+      {
+        "zone": "Report",
+        "verb": "Think back",
+        "title": "Did you agree and sign an inventory or condition report, and keep a copy?",
+        "prompt": "This report is <strong>your evidence</strong> at the end.",
+        "yes": "Yes, signed and kept",
+        "no": "No, or no copy",
+        "why": "The move-in report is what the move-out condition will be compared with.",
+        "how": "Check the inventory or check-in report against the property at move-in. Ask for anything wrong to be corrected, sign it only when it is accurate, and keep your own copy.",
+        "standard": "MoneyHelper and Shelter England (UK): check the inventory against the property on moving day, ask for it to be corrected before you sign, sign and date it only when it is accurate, and keep a copy.",
+        "tip": "Save a photo of every signed page on your phone as well.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Inventory received) · MoneyHelper Moving checklist · Shelter Inventory"
+      },
+      {
+        "zone": "Photos",
+        "verb": "Think back",
+        "title": "Did you take time-stamped photos of every room on move-in day?",
+        "prompt": "Photos with a date <strong>settle arguments</strong>.",
+        "yes": "Yes, every room",
+        "no": "Some, or none",
+        "why": "Written descriptions can be read two ways. Dated photos are much clearer.",
+        "how": "Take a wide photo of every room and close-ups of every mark, stain or fault, with the camera time stamp on. Keep them somewhere safe.",
+        "standard": "NSW Government: take photos to go with the condition report, making sure to include time stamps to show when images were taken.",
+        "tip": "Put a newspaper or your phone's clock in one photo per room for an extra date check.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Time-stamped photos) · NSW Condition reports"
+      },
+      {
+        "zone": "Deadline",
+        "verb": "Think back",
+        "title": "Did you return your part of the condition report on time?",
+        "prompt": "Many places set a <strong>deadline</strong>, for example 7 days in NSW.",
+        "yes": "Yes, on time",
+        "no": "No, or not sure",
+        "why": "If you don't add your comments in time, the landlord's version may be the only record.",
+        "how": "Add your comments and photos to the report and return it within the local deadline. Keep a copy of what you sent and when.",
+        "standard": "NSW Government: tenants should return one completed copy to the landlord or agent within seven days of moving in, and keep the other copy. Deadlines differ elsewhere.",
+        "tip": "Send it by email so you have a dated record of sending it.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Returned in time) · NSW Condition reports"
+      },
+      {
+        "zone": "Meters",
+        "verb": "Think back",
+        "title": "Did you photograph the meter readings on move-in day?",
+        "prompt": "So you <strong>don't pay</strong> for the last occupant's use.",
+        "yes": "Yes, with date and time",
+        "no": "No",
+        "why": "Meter readings on the first day separate your use from the previous occupant's.",
+        "how": "Photograph each meter with the reading, date and time visible. Send the readings to your suppliers.",
+        "standard": "MoneyHelper (UK): take photos of the meters when you move in and give the opening readings to your energy supplier.",
+        "tip": "Do the same on your last day, before you hand the keys back.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Keys & Meters · MoneyHelper Moving checklist"
+      },
+      {
+        "zone": "Deposit",
+        "verb": "Check",
+        "title": "Do you know your deposit is protected (where that's required)?",
+        "prompt": "In some countries this is <strong>a legal requirement</strong>.",
+        "yes": "Yes, I have the details",
+        "no": "Not sure",
+        "why": "Where deposit protection applies, it keeps your money safe and gives you a dispute route at the end.",
+        "how": "Check that you received the deposit scheme details and reference. In England, this must happen within 30 days. Check the rules where you live.",
+        "standard": "UK Government (Tenancy deposit protection): your landlord or agent must put your deposit in a government-approved scheme within 30 days of getting it, and give you the required information within 30 days.",
+        "tip": "Save the scheme's name and your reference in your phone contacts.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Deposit protected) · UK Gov Deposit protection"
+      },
+      {
+        "zone": "Fair wear",
+        "verb": "Know",
+        "title": "Do you know the difference between fair wear and tear and damage?",
+        "prompt": "Normal ageing is <strong>not the tenant's cost</strong>. Damage can be.",
+        "yes": "Yes, I know the difference",
+        "no": "Not really",
+        "why": "Knowing the difference helps you respond calmly and fairly to any deductions.",
+        "how": "Compare changes at move-out with examples: faded curtains are wear, torn curtains are damage; traffic marks on carpet are wear, stains or burns are damage.",
+        "standard": "NSW Government: tenants are not responsible for fair wear and tear, for example faded curtains, furniture indentations and traffic marks, or faded, chipped or cracked paint.",
+        "tip": "Keep the move-in photos open side by side with the move-out ones.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Fair wear and tear) · NSW Fair wear and tear"
+      },
+      {
+        "zone": "Final",
+        "verb": "Plan",
+        "title": "Will you be at the final inspection when you move out?",
+        "prompt": "Being there lets you <strong>see and discuss</strong> any issues.",
+        "yes": "Yes, planned",
+        "no": "Not planned",
+        "why": "It is easier to agree on the condition when you are both looking at it.",
+        "how": "Ask for the final inspection date, clean and clear the home first, and bring your move-in report and photos. If you disagree with deductions, raise a dispute with the deposit scheme.",
+        "standard": "Shelter England: try to be there if your landlord or agent does a check-out inspection, and raise a dispute with the scheme if you do not agree with deductions.",
+        "tip": "Take your own move-out photos, with time stamps, before the inspection starts.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (Final inspection attended) · Shelter Inventory · Shelter Moving out"
+      },
+      {
+        "zone": "Keys",
+        "verb": "Count",
+        "title": "Will you return every key you were given?",
+        "prompt": "A written count <strong>avoids disputes</strong> later.",
+        "yes": "Yes, all counted",
+        "no": "Not sure",
+        "why": "A dated record of every key you handed back avoids disputes later.",
+        "how": "Count every key, remote and card against the move-in list and hand them all back, ideally with a written note of what you returned.",
+        "standard": "MoneyHelper (UK): hand your keys back after the final inspection. Counting keys against the move-in list: professional practice.",
+        "tip": "Photograph all the keys together on the day you return them.",
+        "src": "Source: Beneath the Surface - Move-In / Move-Out, Master Check (All keys returned) · MoneyHelper Moving checklist · Professional practice"
+      }
+    ]
+  }
+};
+const BRIDGE_STILL = {
+  "buyer": [
+    "<strong>The full 18-area Handover Sweep</strong>: alarms, gas and water valves, locks, every room, outside areas, meters, keys, agreed repairs, included items and cleanliness.",
+    "<strong>20 Master Checks</strong>, a room-by-room condition record, keys and meters, questions for the seller and a printable report."
+  ],
+  "owner": [
+    "<strong>A Room-by-Room Condition Record</strong> that compares move-in with move-out for every item, plus Keys &amp; Meters that flags missing keys and readings still to take.",
+    "<strong>20 Master Checks, an 18-area Handover Sweep</strong>, 3-photo evidence, 12 cited steps and a printable report for your landlord, agent or deposit scheme."
+  ]
+};
+const BEHAVIOUR_FIRST = {
+  "buyer": [0, 7, 2, 1],
+  "owner": [0, 1, 3, 6]
+};
+
+const STORE_KEY = 'snagtag-move-in-out-check';
+let state = { idx:0, answers:[], started:false, product:null };
+let CHECKS = [];
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw){ const s = JSON.parse(raw); if(s && Array.isArray(s.answers)) state = s; }
+  }catch(e){}
+  if(state.product && PRODUCTS[state.product]) CHECKS = PRODUCTS[state.product].checks;
+  else state.product = null;
+}
+function saveState(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+function hexToRgbStr(hex){
+  hex = hex.replace('#','');
+  const r = parseInt(hex.substring(0,2),16), g = parseInt(hex.substring(2,4),16), b = parseInt(hex.substring(4,6),16);
+  return r+','+g+','+b;
+}
+function applyProductTheme(key){
+  const p = PRODUCTS[key];
+  document.documentElement.style.setProperty('--accent', p.accent);
+  document.documentElement.style.setProperty('--accent-dark', p.accentDark);
+  document.documentElement.style.setProperty('--accent-rgb', hexToRgbStr(p.accent));
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('progressWrap').style.display = (id==='screen-check') ? 'block' : 'none';
+  window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+}
+
+document.querySelectorAll('.choose-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    const key = card.getAttribute('data-key');
+    state = { idx:0, answers:[], started:true, product:key };
+    CHECKS = PRODUCTS[key].checks;
+    applyProductTheme(key);
+    saveState();
+    renderCheck(); show('screen-check');
+  });
+});
+
+function renderCheck(){
+  const i = state.idx;
+  const c = CHECKS[i];
+  document.getElementById('chkZone').textContent = c.zone;
+  document.getElementById('chkVerb').textContent = c.verb;
+  document.getElementById('chkTitle').textContent = c.title;
+  document.getElementById('chkPrompt').innerHTML = c.prompt;
+  document.getElementById('progressText').textContent = 'Check ' + (i+1) + ' of ' + CHECKS.length;
+  document.getElementById('progressPct').textContent = Math.round(((i)/CHECKS.length)*100) + '%';
+  document.getElementById('progressFill').style.width = ((i)/CHECKS.length*100) + '%';
+
+  const opts = document.getElementById('chkOpts');
+  opts.innerHTML = '';
+  const answered = state.answers[i] !== undefined && state.answers[i] !== null;
+
+  [['yes', c.yes, true], ['no', c.no, false]].forEach(([key,label,isSafe])=>{
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.setAttribute('role','button');
+    div.setAttribute('tabindex','0');
+    const isSelected = answered && state.answers[i] === isSafe;
+    div.innerHTML = '<span class="ic">'+(isSelected ? '✓' : '')+'</span><span>'+label+'</span>';
+    if(isSelected) div.classList.add('selected', isSafe ? 'safe':'flag');
+    const pick = ()=>{
+      state.answers[i] = isSafe;
+      saveState();
+      renderCheck();
+      applyReveal(c, isSafe);
+      document.getElementById('chkNavRow').style.display = 'flex';
+      document.getElementById('chkNextBtn').textContent = (i === CHECKS.length-1) ? 'See my results →' : 'Next check →';
+    };
+    div.addEventListener('click', pick);
+    div.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(); } });
+    opts.appendChild(div);
+  });
+
+  const rv = document.getElementById('chkReveal');
+  if(answered){
+    applyReveal(c, state.answers[i]);
+    document.getElementById('chkNavRow').style.display = 'flex';
+    document.getElementById('chkNextBtn').textContent = (i === CHECKS.length-1) ? 'See my results →' : 'Next check →';
+  } else {
+    rv.classList.remove('show');
+    document.getElementById('chkNavRow').style.display = 'none';
+  }
+  document.getElementById('chkBackBtn').style.visibility = (i===0) ? 'hidden' : 'visible';
+}
+
+function applyReveal(c, isSafe){
+  const rv = document.getElementById('chkReveal');
+  rv.classList.add('show');
+  rv.classList.toggle('good', !!isSafe);
+  rv.classList.toggle('bad', !isSafe);
+  const kicker = document.getElementById('revealKicker');
+  const line1 = document.getElementById('revealWhy');
+  const line2 = document.getElementById('revealHow');
+  if(isSafe){
+    kicker.textContent = '✓ Good - that\'s sorted';
+    line1.textContent = 'That matches the guidance: ' + c.standard;
+    line2.textContent = c.tip;
+  } else {
+    kicker.textContent = '⚠ Worth fixing - here\'s why';
+    line1.textContent = c.why;
+    line2.textContent = c.how;
+  }
+  document.getElementById('revealSrc').textContent = c.src;
+}
+
+document.getElementById('chkNextBtn').addEventListener('click', ()=>{
+  if(state.idx < CHECKS.length-1){
+    state.idx++; saveState(); renderCheck(); show('screen-check');
+  } else {
+    document.getElementById('progressFill').style.width = '100%';
+    renderResult(); show('screen-result');
+  }
+});
+document.getElementById('chkBackBtn').addEventListener('click', ()=>{
+  if(state.idx>0){ state.idx--; saveState(); renderCheck(); show('screen-check'); }
+});
+document.getElementById('chkChooseBtn').addEventListener('click', ()=>{
+  state = { idx:0, answers:[], started:true, product:null };
+  saveState();
+  show('screen-choose');
+});
+
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  state = { idx:0, answers:[], started:true, product:null }; saveState();
+  show('screen-choose');
+});
+document.getElementById('restartBtn').addEventListener('click', ()=>{
+  state = { idx:0, answers:[], started:true, product:null }; saveState();
+  show('screen-choose');
+});
+
+function escHtml(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+
+document.getElementById('saveResultsBtn').addEventListener('click', ()=>{
+  const p = PRODUCTS[state.product];
+  const safeItems = CHECKS.filter((c,i)=>state.answers[i]===true);
+  const flagItems = CHECKS.filter((c,i)=>state.answers[i]===false);
+  const dateStr = new Date().toLocaleDateString(undefined, {year:'numeric',month:'long',day:'numeric'});
+  const rowsFlag = flagItems.map(c=>'<div class="row flag"><strong>'+escHtml(c.title.replace(/\?$/,''))+'</strong><span>'+escHtml(c.how)+'</span><em>'+escHtml(c.src)+'</em></div>').join('') || '<p style="color:#6B7A93">Nothing flagged - every check today was already sorted.</p>';
+  const rowsSafe = safeItems.map(c=>'<div class="row safe"><strong>'+escHtml(c.title.replace(/\?$/,''))+'</strong><span>'+escHtml(c.tip)+'</span></div>').join('') || '<p style="color:#6B7A93">Nothing marked sorted yet.</p>';
+  const html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My Move-In and Move-Out Check - '+dateStr+'</title>'
+    + '<style>body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:#F7FAFD;color:#16243F;max-width:640px;margin:0 auto;padding:32px 20px;line-height:1.6}'
+    + 'h1{font-size:1.5rem;margin:0 0 4px}p.sub{color:#6B7A93;margin:0 0 26px;font-size:14px}'
+    + 'h2{font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:#6B7A93;margin:26px 0 10px}'
+    + '.row{border-left:4px solid '+p.accent+';background:#fff;border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:10px}'
+    + '.row.safe{border-left-color:#2E7D4F}.row.flag{border-left-color:#A15C00}'
+    + '.row strong{display:block;font-size:14.5px;margin-bottom:3px}.row span{font-size:13.5px;color:#44546F;display:block}.row em{font-size:12px;color:#6B7A93;display:block;margin-top:4px}'
+    + '.cta{display:inline-block;margin-top:22px;background:linear-gradient(135deg,'+p.accent+','+p.accentDark+');color:#fff;font-weight:700;padding:13px 20px;border-radius:10px;text-decoration:none}'
+    + 'footer{margin-top:30px;padding-top:16px;border-top:1px solid #C9D6E8;font-size:11.5px;color:#6B7A93}</style></head><body>'
+    + '<h1>My Move-In &amp; Move-Out Check: ' + p.label + '</h1><p class="sub">Saved '+dateStr+' &middot; Beneath the Surface by The Snag Tag</p>'
+    + '<h2>Check today</h2>' + rowsFlag
+    + '<h2>Already sorted</h2>' + rowsSafe
+    + '<a class="cta" href="'+GUMROAD_URL+'" target="_blank" rel="noopener">Get the complete Move-In / Move-Out tool &rarr;</a>'
+    + '<footer>Educational general guidance from The Snag Tag, a NEBOSH &amp; OSHA trained HSE professional. Not legal advice. Saved locally to your device; nothing was sent anywhere.</footer>'
+    + '</body></html>';
+  const blob = new Blob([html], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'move-in-out-check-' + state.product + '-results.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 2000);
+});
+
+function renderResult(){
+  const p = PRODUCTS[state.product];
+  const total = CHECKS.length;
+  const safeCount = state.answers.filter(a=>a===true).length;
+  const flagCount = state.answers.filter(a=>a===false).length;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statSafe').textContent = safeCount;
+  document.getElementById('statFlag').textContent = flagCount;
+
+  document.getElementById('resultHeadline').textContent =
+    flagCount === 0 ? total + ' for ' + total + ' - genuinely well done' :
+    flagCount <= 2 ? 'Close. A couple of things to look at' :
+    'You just found real gaps';
+
+  const zones = {};
+  CHECKS.forEach((c,i)=>{
+    if(!zones[c.zone]) zones[c.zone] = {safe:0,total:0};
+    zones[c.zone].total++;
+    if(state.answers[i]===true) zones[c.zone].safe++;
+  });
+  const zb = document.getElementById('zoneBars');
+  zb.innerHTML = '';
+  Object.keys(zones).forEach(z=>{
+    const d = zones[z];
+    const pct = Math.round((d.safe/d.total)*100);
+    const row = document.createElement('div');
+    row.className = 'zbar-row';
+    row.innerHTML = '<div class="zbar-label">'+z+'</div><div class="zbar-track"><div class="zbar-fill'+(pct<100?' partial':'')+'" style="width:'+pct+'%"></div></div><div class="zbar-count">'+d.safe+'/'+d.total+'</div>';
+    zb.appendChild(row);
+  });
+
+  const flagWrap = document.getElementById('findingsFlag');
+  const safeWrap = document.getElementById('findingsSafe');
+  flagWrap.innerHTML = ''; safeWrap.innerHTML = '';
+  if(flagCount===0){
+    flagWrap.innerHTML = '<p style="font-size:14px;color:var(--ink-soft)">Nothing flagged today - see the sorted list below.</p>';
+  }
+  CHECKS.forEach((c,i)=>{
+    const isSafe = state.answers[i]===true;
+    const div = document.createElement('div');
+    div.className = 'finding ' + (isSafe?'safe':'flag');
+    div.innerHTML = '<div class="fic">'+(isSafe?'✓':'!')+'</div><div><div class="ft">'+c.title.replace(/\?$/,'')+'</div><div class="fd">'+(isSafe? 'Sorted - keep it that way.' : c.how)+'</div></div>';
+    (isSafe ? safeWrap : flagWrap).appendChild(div);
+  });
+
+  const behaviourFirst = BEHAVIOUR_FIRST[state.product] || [];
+  let qwIndex = behaviourFirst.find(i => state.answers[i]===false);
+  if(qwIndex === undefined) qwIndex = CHECKS.findIndex((c,i)=>state.answers[i]===false);
+  if(qwIndex === undefined || qwIndex === -1) qwIndex = 1;
+  const qw = CHECKS[qwIndex];
+  document.getElementById('qwTitle').textContent = qw.title.replace(/\?$/,'');
+  document.getElementById('qwBody').textContent = qw.how;
+
+  const bridgeBody = flagCount === 0
+    ? 'You\'re sorted on all ' + total + ' of today\'s checks. The full Beneath the Surface Move-In / Move-Out tool goes much further: an 18-area handover sweep, a room-by-room condition record that compares move-in with move-out, keys and meters, and a printable report.'
+    : 'Today\'s check found ' + flagCount + ' of the most commonly missed move-in and move-out gaps. The full Beneath the Surface Move-In / Move-Out tool helps you record every room, compare the condition item by item, and keep the evidence in one report.';
+  document.getElementById('bridgeBody').textContent = bridgeBody;
+
+  const stillItems = BRIDGE_STILL[state.product] || [];
+  document.getElementById('bridgeStillList').innerHTML = stillItems.map(li=>'<li>'+li+'</li>').join('');
+
+  document.getElementById('proBtn').href = GUMROAD_URL;
+  document.getElementById('proBtn').textContent = 'Get the Move-In / Move-Out tool →';
+}
+
+function applyMode(m){
+  document.body.setAttribute('data-mode', m);
+  document.getElementById('modeToggle').textContent = m==='dark' ? '☀️' : '🌙';
+  try{ localStorage.setItem(STORE_KEY+'-mode', m); }catch(e){}
+}
+document.getElementById('modeToggle').addEventListener('click', ()=>{
+  applyMode(document.body.getAttribute('data-mode')==='dark' ? 'light' : 'dark');
+});
+(function initMode(){
+  let m = 'light';
+  try{ m = localStorage.getItem(STORE_KEY+'-mode') || 'light'; }catch(e){}
+  applyMode(m);
+})();
+
+loadState();
+if(state.product) applyProductTheme(state.product);
+if(state.started && state.product && state.idx < CHECKS.length && !(state.answers.length===CHECKS.length && state.answers.every(a=>a!==undefined && a!==null))){
+  renderCheck(); show('screen-check');
+} else if(state.started && state.product && state.answers.length===CHECKS.length && state.answers.every(a=>a!==undefined && a!==null)){
+  renderResult(); show('screen-result');
+} else if(state.started && !state.product){
+  show('screen-choose');
+}
+</script>
+</body>
+</html>
